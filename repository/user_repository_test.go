@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/domain"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/mongo/mocks"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/repository"
+	"github.com/RajathSVasisth/elasticApp/domain"
+	"github.com/RajathSVasisth/elasticApp/mongo/mocks"
+	"github.com/RajathSVasisth/elasticApp/repository"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"go.mongodb.org/mongo-driver/bson/primitive"
