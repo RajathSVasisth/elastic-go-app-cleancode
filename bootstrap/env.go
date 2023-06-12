@@ -11,11 +11,14 @@ type Env struct {
 	ServerAddress          string `mapstructure:"SERVER_ADDRESS"`
 	ContextTimeout         int    `mapstructure:"CONTEXT_TIMEOUT"`
 	DBURL                  string `mapstructure:"DB_URL"`
+	ElasticURL             string `mapstructure:"ELASTICSEARCH_URL"`
 	DBName                 string `mapstructure:"DB_NAME"`
 	AccessTokenExpiryHour  int    `mapstructure:"ACCESS_TOKEN_EXPIRY_HOUR"`
 	RefreshTokenExpiryHour int    `mapstructure:"REFRESH_TOKEN_EXPIRY_HOUR"`
 	AccessTokenSecret      string `mapstructure:"ACCESS_TOKEN_SECRET"`
 	RefreshTokenSecret     string `mapstructure:"REFRESH_TOKEN_SECRET"`
+	ElasticUsername        string `mapstructure:"ELASTICSEARCH_USERNAME"`
+	ElasticPassword        string `mapstructure:"ELASTICSEARCH_PASSWORD"`
 }
 
 func NewEnv() *Env {

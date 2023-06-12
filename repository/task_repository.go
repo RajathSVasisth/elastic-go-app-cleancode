@@ -4,50 +4,35 @@ import (
 	"context"
 
 	"github.com/RajathSVasisth/elasticApp/domain"
-	"github.com/RajathSVasisth/elasticApp/mongo"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/RajathSVasisth/elasticApp/elastic"
 )
 
+// Task represents the repository used for interacting with Task records.
 type taskRepository struct {
-	database   mongo.Database
-	collection string
+	elasticClient *elastic.ElasticDB
+	index         string
 }
 
-func NewTaskRepository(db mongo.Database, collection string) domain.TaskRepository {
+func NewTaskRepository(elasticClient *elastic.ElasticDB, indexname string) domain.TaskRepository {
 	return &taskRepository{
-		database:   db,
-		collection: collection,
+		elasticClient: elasticClient,
+		index:         indexname,
 	}
 }
 
 func (tr *taskRepository) Create(c context.Context, task *domain.Task) error {
-	collection := tr.database.Collection(tr.collection)
 
-	_, err := collection.InsertOne(c, task)
+	err := tr.elasticClient.Index(c, *task, tr.index)
 
 	return err
 }
 
 func (tr *taskRepository) FetchByUserID(c context.Context, userID string) ([]domain.Task, error) {
-	collection := tr.database.Collection(tr.collection)
 
-	var tasks []domain.Task
-
-	idHex, err := primitive.ObjectIDFromHex(userID)
-	if err != nil {
-		return tasks, err
-	}
-
-	cursor, err := collection.Find(c, bson.M{"userID": idHex})
+	res, err := tr.elasticClient.Search(c, domain.SearchParams{UserID: &userID}, tr.index)
 	if err != nil {
 		return nil, err
 	}
 
-	err = cursor.All(c, &tasks)
-	if tasks == nil {
-		return []domain.Task{}, err
-	}
-
-	return tasks, err
+	return res.Tasks, err
 }
