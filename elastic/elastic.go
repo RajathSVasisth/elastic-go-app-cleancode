@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 
 	"github.com/RajathSVasisth/elasticApp/domain"
@@ -39,10 +38,8 @@ func (t *ElasticDB) Index(ctx context.Context, task domain.Task, indexname strin
 	defer resp.Body.Close()
 
 	if resp.IsError() {
-		fmt.Println("Error in indexing", err, resp.Status())
 		return err
 	}
-	fmt.Println("Indexing successful")
 
 	io.Copy(io.Discard, resp.Body) //nolint: errcheck
 
@@ -173,7 +170,6 @@ func (t *ElasticDB) Search(ctx context.Context, args domain.SearchParams, indexn
 	defer resp.Body.Close()
 
 	if resp.IsError() {
-		fmt.Println("Error in searching", err, resp.Status())
 		return domain.SearchResults{}, err
 	}
 

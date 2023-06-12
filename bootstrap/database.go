@@ -25,6 +25,8 @@ func NewElasticSearch(env *Env) (es *esv8.Client, err error) {
 	}
 
 	res, err := es.Info()
+	fmt.Println(res, err)
+
 	if err != nil {
 		log.Fatal(err)
 	}
