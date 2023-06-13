@@ -3,6 +3,7 @@ package elastic
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 
 	esv7 "github.com/elastic/go-elasticsearch/v7"
@@ -16,7 +17,7 @@ type elasticDB struct {
 type ElasticDBMethod interface {
 	Index(ctx context.Context, buf bytes.Buffer, indexname string, id string) error
 	Delete(ctx context.Context, id string, indexname string) error
-	Search(ctx context.Context, buf bytes.Buffer, indexname string) (interface{}, error)
+	Search(ctx context.Context, buf bytes.Buffer, indexname string) (io.ReadCloser, error)
 }
 
 func NewElasticDB(client *esv7.Client) ElasticDBMethod {
@@ -76,20 +77,24 @@ func (t *elasticDB) Delete(ctx context.Context, id string, indexname string) err
 // Search returns tasks matching a query.
 //
 //nolint:funlen,cyclop
-func (t *elasticDB) Search(ctx context.Context, buf bytes.Buffer, indexname string) (interface{}, error) {
-
+func (t *elasticDB) Search(ctx context.Context, buf bytes.Buffer, indexname string) (io.ReadCloser, error) {
+	from := 0
+	size := 10
 	req := esv7api.SearchRequest{
 		Index: []string{indexname},
 		Body:  &buf,
+		From:  &from,
+		Size:  &size,
+		Sort:  []string{"{_score:{_id:asc}}"},
 	}
 
 	resp, err := req.Do(ctx, t.client)
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
 
 	if resp.IsError() {
+		fmt.Println(resp.Status(), err)
 		return nil, err
 	}
 

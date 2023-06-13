@@ -11,13 +11,13 @@ const (
 )
 
 type Task struct {
-	ID      primitive.ObjectID `json:"-"`
-	Name    string             `json:"name"`
-	Address string             `json:"address"`
-	DOB     string             `json:"dob"`
-	Country string             `json:"country"`
-	Gender  string             `json:"gender"`
-	UserID  primitive.ObjectID `json:"-"`
+	ID      primitive.ObjectID `json:"-" form:"-"`
+	Name    string             `json:"name" form:"name"`
+	Address string             `json:"address" form:"address"`
+	DOB     string             `json:"dob" form:"dob"`
+	Country string             `json:"country" form:"country"`
+	Gender  string             `json:"gender" form:"gender"`
+	UserID  primitive.ObjectID `json:"userid" form:"-"`
 }
 
 type TaskRepository interface {
