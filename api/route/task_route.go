@@ -14,9 +14,7 @@ import (
 )
 
 func NewTaskRouter(env *bootstrap.Env, timeout time.Duration, client *esv8.Client, group *gin.RouterGroup) {
-	tr := repository.NewTaskRepository(&elastic.ElasticDB{
-		Client: client,
-	}, domain.Index)
+	tr := repository.NewTaskRepository(elastic.NewElasticDB(client), domain.Index)
 	tc := &controller.TaskController{
 		TaskUsecase: usecase.NewTaskUsecase(tr, timeout),
 	}
