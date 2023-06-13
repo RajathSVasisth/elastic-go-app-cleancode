@@ -4,12 +4,12 @@ import (
 	"log"
 
 	"github.com/RajathSVasisth/elasticApp/mongo"
-	esv8 "github.com/elastic/go-elasticsearch/v8"
+	esv7 "github.com/elastic/go-elasticsearch/v7"
 )
 
 type Application struct {
 	Env    *Env
-	Client *esv8.Client
+	Client *esv7.Client
 	Mongo  mongo.Client
 }
 

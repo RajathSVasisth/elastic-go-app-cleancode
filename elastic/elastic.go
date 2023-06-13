@@ -5,12 +5,12 @@ import (
 	"context"
 	"io"
 
-	esv8 "github.com/elastic/go-elasticsearch/v8"
-	esv8api "github.com/elastic/go-elasticsearch/v8/esapi"
+	esv7 "github.com/elastic/go-elasticsearch/v7"
+	esv7api "github.com/elastic/go-elasticsearch/v7/esapi"
 )
 
 type elasticDB struct {
-	client *esv8.Client
+	client *esv7.Client
 }
 
 type ElasticDBMethod interface {
@@ -19,7 +19,7 @@ type ElasticDBMethod interface {
 	Search(ctx context.Context, buf bytes.Buffer, indexname string) (interface{}, error)
 }
 
-func NewElasticDB(client *esv8.Client) ElasticDBMethod {
+func NewElasticDB(client *esv7.Client) ElasticDBMethod {
 	return &elasticDB{
 		client: client,
 	}
@@ -28,7 +28,7 @@ func NewElasticDB(client *esv8.Client) ElasticDBMethod {
 // Index creates or updates a task in an index.
 func (t *elasticDB) Index(ctx context.Context, buf bytes.Buffer, indexname string, id string) error {
 
-	req := esv8api.IndexRequest{
+	req := esv7api.IndexRequest{
 		Index:      indexname,
 		Body:       &buf,
 		DocumentID: id,
@@ -53,7 +53,7 @@ func (t *elasticDB) Index(ctx context.Context, buf bytes.Buffer, indexname strin
 // Delete removes a task from the index.
 func (t *elasticDB) Delete(ctx context.Context, id string, indexname string) error {
 
-	req := esv8api.DeleteRequest{
+	req := esv7api.DeleteRequest{
 		Index:      indexname,
 		DocumentID: id,
 	}
@@ -78,7 +78,7 @@ func (t *elasticDB) Delete(ctx context.Context, id string, indexname string) err
 //nolint:funlen,cyclop
 func (t *elasticDB) Search(ctx context.Context, buf bytes.Buffer, indexname string) (interface{}, error) {
 
-	req := esv8api.SearchRequest{
+	req := esv7api.SearchRequest{
 		Index: []string{indexname},
 		Body:  &buf,
 	}

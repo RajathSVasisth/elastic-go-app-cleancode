@@ -17,8 +17,8 @@ type Env struct {
 	RefreshTokenExpiryHour int    `mapstructure:"REFRESH_TOKEN_EXPIRY_HOUR"`
 	AccessTokenSecret      string `mapstructure:"ACCESS_TOKEN_SECRET"`
 	RefreshTokenSecret     string `mapstructure:"REFRESH_TOKEN_SECRET"`
-	ElasticUsername        string `mapstructure:"ELASTICSEARCH_USERNAME"`
-	ElasticPassword        string `mapstructure:"ELASTICSEARCH_PASSWORD"`
+	ElasticUsername        string `mapstructure:"ELASTIC_USERNAME"`
+	ElasticPassword        string `mapstructure:"ELASTIC_PASSWORD"`
 }
 
 func NewEnv() *Env {

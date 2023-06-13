@@ -7,19 +7,19 @@ import (
 	"time"
 
 	"github.com/RajathSVasisth/elasticApp/mongo"
-	esv8 "github.com/elastic/go-elasticsearch/v8"
+	esv7 "github.com/elastic/go-elasticsearch/v7"
 )
 
 // NewElasticSearch instantiates the ElasticSearch client using configuration defined in environment variables.
-func NewElasticSearch(env *Env) (es *esv8.Client, err error) {
-	cfg := esv8.Config{
+func NewElasticSearch(env *Env) (es *esv7.Client, err error) {
+	cfg := esv7.Config{
 		Addresses: []string{
 			env.ElasticURL,
 		},
 		Username: env.ElasticUsername,
 		Password: env.ElasticPassword,
 	}
-	es, err = esv8.NewClient(cfg)
+	es, err = esv7.NewClient(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
