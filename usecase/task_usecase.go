@@ -25,8 +25,8 @@ func (tu *taskUsecase) Create(c context.Context, task *domain.Task) error {
 	return tu.taskRepository.Create(ctx, task)
 }
 
-func (tu *taskUsecase) FetchByUserID(c context.Context, userID string) ([]domain.Task, error) {
+func (tu *taskUsecase) FetchByUserID(c context.Context, userID string, pagination domain.Pagination) ([]domain.Task, error) {
 	ctx, cancel := context.WithTimeout(c, tu.contextTimeout)
 	defer cancel()
-	return tu.taskRepository.FetchByUserID(ctx, userID)
+	return tu.taskRepository.FetchByUserID(ctx, userID, pagination)
 }

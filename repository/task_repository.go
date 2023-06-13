@@ -34,7 +34,7 @@ func (tr *taskRepository) Create(c context.Context, task *domain.Task) error {
 	return err
 }
 
-func (tr *taskRepository) FetchByUserID(c context.Context, userID string) ([]domain.Task, error) {
+func (tr *taskRepository) FetchByUserID(c context.Context, userID string, pagination domain.Pagination) ([]domain.Task, error) {
 
 	should := make([]interface{}, 0, 1)
 
@@ -54,7 +54,7 @@ func (tr *taskRepository) FetchByUserID(c context.Context, userID string) ([]dom
 		return []domain.Task{}, err
 	}
 
-	resBody, err := tr.elasticClient.Search(c, buf, tr.index)
+	resBody, err := tr.elasticClient.Search(c, buf, tr.index, &pagination.From, &pagination.Size)
 	if err != nil {
 		return []domain.Task{}, err
 	}

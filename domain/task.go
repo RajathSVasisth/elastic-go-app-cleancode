@@ -20,12 +20,17 @@ type Task struct {
 	UserID  primitive.ObjectID `json:"userid" form:"-"`
 }
 
+type Pagination struct {
+	From int
+	Size int
+}
+
 type TaskRepository interface {
 	Create(c context.Context, task *Task) error
-	FetchByUserID(c context.Context, userID string) ([]Task, error)
+	FetchByUserID(c context.Context, userID string, pagination Pagination) ([]Task, error)
 }
 
 type TaskUsecase interface {
 	Create(c context.Context, task *Task) error
-	FetchByUserID(c context.Context, userID string) ([]Task, error)
+	FetchByUserID(c context.Context, userID string, pagination Pagination) ([]Task, error)
 }

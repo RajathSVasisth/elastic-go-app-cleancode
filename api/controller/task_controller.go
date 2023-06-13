@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/RajathSVasisth/elasticApp/domain"
 	"github.com/gin-gonic/gin"
@@ -44,7 +45,22 @@ func (tc *TaskController) Create(c *gin.Context) {
 func (u *TaskController) Fetch(c *gin.Context) {
 	userID := c.GetString("x-user-id")
 
-	tasks, err := u.TaskUsecase.FetchByUserID(c, userID)
+	var pagination domain.Pagination
+	from, err := strconv.Atoi(c.DefaultQuery("from", "0"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+	to, err := strconv.Atoi(c.DefaultQuery("to", "10"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+	size := to - from
+	pagination.From = from
+	pagination.Size = size
+
+	tasks, err := u.TaskUsecase.FetchByUserID(c, userID, pagination)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
 		return

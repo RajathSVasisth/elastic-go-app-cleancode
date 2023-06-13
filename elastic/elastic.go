@@ -17,7 +17,7 @@ type elasticDB struct {
 type ElasticDBMethod interface {
 	Index(ctx context.Context, buf bytes.Buffer, indexname string, id string) error
 	Delete(ctx context.Context, id string, indexname string) error
-	Search(ctx context.Context, buf bytes.Buffer, indexname string) (io.ReadCloser, error)
+	Search(ctx context.Context, buf bytes.Buffer, indexname string, from *int, size *int) (io.ReadCloser, error)
 }
 
 func NewElasticDB(client *esv7.Client) ElasticDBMethod {
@@ -77,14 +77,12 @@ func (t *elasticDB) Delete(ctx context.Context, id string, indexname string) err
 // Search returns tasks matching a query.
 //
 //nolint:funlen,cyclop
-func (t *elasticDB) Search(ctx context.Context, buf bytes.Buffer, indexname string) (io.ReadCloser, error) {
-	from := 0
-	size := 10
+func (t *elasticDB) Search(ctx context.Context, buf bytes.Buffer, indexname string, from *int, size *int) (io.ReadCloser, error) {
 	req := esv7api.SearchRequest{
 		Index: []string{indexname},
 		Body:  &buf,
-		From:  &from,
-		Size:  &size,
+		From:  from,
+		Size:  size,
 		Sort:  []string{"{_score:{_id:asc}}"},
 	}
 
