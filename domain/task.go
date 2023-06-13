@@ -28,9 +28,13 @@ type Pagination struct {
 type TaskRepository interface {
 	Create(c context.Context, task *Task) error
 	FetchByUserID(c context.Context, userID string, pagination Pagination) ([]Task, error)
+	Update(c context.Context, task *Task) error
+	Delete(c context.Context, id *string) error
 }
 
 type TaskUsecase interface {
 	Create(c context.Context, task *Task) error
 	FetchByUserID(c context.Context, userID string, pagination Pagination) ([]Task, error)
+	Update(c context.Context, task *Task) error
+	Delete(c context.Context, id *string) error
 }

@@ -30,3 +30,15 @@ func (tu *taskUsecase) FetchByUserID(c context.Context, userID string, paginatio
 	defer cancel()
 	return tu.taskRepository.FetchByUserID(ctx, userID, pagination)
 }
+
+func (tu *taskUsecase) Update(c context.Context, task *domain.Task) error {
+	ctx, cancel := context.WithTimeout(c, tu.contextTimeout)
+	defer cancel()
+	return tu.taskRepository.Update(ctx, task)
+}
+
+func (tu *taskUsecase) Delete(c context.Context, id *string) error {
+	ctx, cancel := context.WithTimeout(c, tu.contextTimeout)
+	defer cancel()
+	return tu.taskRepository.Delete(ctx, id)
+}

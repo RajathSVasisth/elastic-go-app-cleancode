@@ -68,3 +68,50 @@ func (u *TaskController) Fetch(c *gin.Context) {
 
 	c.JSON(http.StatusOK, tasks)
 }
+
+func (u *TaskController) Update(c *gin.Context) {
+	var task domain.Task
+	var err error
+
+	err = c.ShouldBind(&task)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	task.UserID, err = primitive.ObjectIDFromHex(c.GetString("x-user-id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	task.ID, err = primitive.ObjectIDFromHex(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	err = u.TaskUsecase.Update(c, &task)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, domain.SuccessResponse{
+		Message: "Task updated successfully",
+	})
+}
+
+func (u *TaskController) Delete(c *gin.Context) {
+	id := c.Param("id")
+
+	err := u.TaskUsecase.Delete(c, &id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, domain.SuccessResponse{
+		Message: "Task deleted successfully",
+	})
+}

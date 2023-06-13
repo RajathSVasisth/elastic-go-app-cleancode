@@ -20,4 +20,6 @@ func NewTaskRouter(env *bootstrap.Env, timeout time.Duration, client *esv7.Clien
 	}
 	group.GET("/task", tc.Fetch)
 	group.POST("/task", tc.Create)
+	group.PUT("/task/:id", tc.Update)
+	group.DELETE("/task/:id", tc.Delete)
 }

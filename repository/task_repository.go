@@ -90,3 +90,21 @@ func (tr *taskRepository) FetchByUserID(c context.Context, userID string, pagina
 
 	return finalres, err
 }
+
+func (tr *taskRepository) Update(c context.Context, task *domain.Task) error {
+
+	var buf bytes.Buffer
+
+	if err := json.NewEncoder(&buf).Encode(task); err != nil {
+		return err
+	}
+
+	err := tr.elasticClient.Index(c, buf, tr.index, task.ID.Hex())
+
+	return err
+}
+
+func (tr *taskRepository) Delete(c context.Context, id *string) error {
+	err := tr.elasticClient.Delete(c, *id, tr.index)
+	return err
+}
