@@ -3,12 +3,12 @@ package route
 import (
 	"time"
 
-	"github.com/RajathSVasisth/elasticApp/api/controller"
-	"github.com/RajathSVasisth/elasticApp/bootstrap"
-	"github.com/RajathSVasisth/elasticApp/domain"
-	"github.com/RajathSVasisth/elasticApp/elastic"
-	"github.com/RajathSVasisth/elasticApp/repository"
-	"github.com/RajathSVasisth/elasticApp/usecase"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/api/controller"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/bootstrap"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/elastic"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/repository"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/usecase"
 	esv7 "github.com/elastic/go-elasticsearch/v7"
 	"github.com/gin-gonic/gin"
 )

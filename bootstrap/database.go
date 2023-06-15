@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/RajathSVasisth/elasticApp/mongo"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/mongo"
 	esv7 "github.com/elastic/go-elasticsearch/v7"
 )
 

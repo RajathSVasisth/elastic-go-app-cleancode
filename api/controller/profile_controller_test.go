@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/RajathSVasisth/elasticApp/api/controller"
-	"github.com/RajathSVasisth/elasticApp/domain"
-	"github.com/RajathSVasisth/elasticApp/mocks"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/api/controller"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

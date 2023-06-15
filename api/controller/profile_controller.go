@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"github.com/RajathSVasisth/elasticApp/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
 	"github.com/gin-gonic/gin"
 )
 

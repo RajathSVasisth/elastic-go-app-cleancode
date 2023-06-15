@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	domain "github.com/RajathSVasisth/elasticApp/domain"
+	domain "github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
 	mock "github.com/stretchr/testify/mock"
 )
 

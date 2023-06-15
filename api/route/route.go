@@ -3,9 +3,9 @@ package route
 import (
 	"time"
 
-	"github.com/RajathSVasisth/elasticApp/api/middleware"
-	"github.com/RajathSVasisth/elasticApp/bootstrap"
-	"github.com/RajathSVasisth/elasticApp/mongo"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/api/middleware"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/bootstrap"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/mongo"
 	esv7 "github.com/elastic/go-elasticsearch/v7"
 	"github.com/gin-gonic/gin"
 )

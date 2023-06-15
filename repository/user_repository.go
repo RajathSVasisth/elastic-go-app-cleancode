@@ -3,8 +3,8 @@ package repository
 import (
 	"context"
 
-	"github.com/RajathSVasisth/elasticApp/domain"
-	"github.com/RajathSVasisth/elasticApp/mongo"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/mongo"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"

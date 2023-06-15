@@ -1,4 +1,4 @@
-module github.com/RajathSVasisth/elasticApp
+module github.com/RajathSVasisth/elastic-go-app-cleancode
 
 go 1.19
 

@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	mongo "github.com/RajathSVasisth/elasticApp/mongo"
+	mongo "github.com/RajathSVasisth/elastic-go-app-cleancode/mongo"
 	mock "github.com/stretchr/testify/mock"
 
 	mongo_drivermongo "go.mongodb.org/mongo-driver/mongo"

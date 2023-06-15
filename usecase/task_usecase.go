@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/RajathSVasisth/elasticApp/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
 )
 
 type taskUsecase struct {

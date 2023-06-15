@@ -3,8 +3,8 @@ package controller
 import (
 	"net/http"
 
-	"github.com/RajathSVasisth/elasticApp/bootstrap"
-	"github.com/RajathSVasisth/elasticApp/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/bootstrap"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/crypto/bcrypt"

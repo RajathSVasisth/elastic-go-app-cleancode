@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/RajathSVasisth/elasticApp/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
 	jwt "github.com/golang-jwt/jwt/v4"
 )
 

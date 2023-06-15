@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/RajathSVasisth/elasticApp/domain"
-	"github.com/RajathSVasisth/elasticApp/internal/tokenutil"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
+	"github.com/RajathSVasisth/elastic-go-app-cleancode/internal/tokenutil"
 )
 
 type signupUsecase struct {
