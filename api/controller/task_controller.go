@@ -13,6 +13,19 @@ type TaskController struct {
 	TaskUsecase domain.TaskUsecase
 }
 
+// Create godoc
+// @Summary     Create a new task
+// @Description Creates a new task for the authenticated user
+// @Tags        Tasks
+// @Security    ApiKeyAuth
+// @Accept      json
+// @Produce     json
+// @Param       authorization header   string  true  "bearer token"
+// @Param       task          body     domain.Task true "Task object"
+// @Success     200           {object} domain.SuccessResponse
+// @Failure     400           {object} domain.ErrorResponse
+// @Failure     500           {object} domain.ErrorResponse
+// @Router      /tasks [post]
 func (tc *TaskController) Create(c *gin.Context) {
 	var task domain.Task
 
@@ -42,6 +55,20 @@ func (tc *TaskController) Create(c *gin.Context) {
 	})
 }
 
+// Fetch godoc
+// @Summary     Fetch user tasks
+// @Description Retrieves tasks for the authenticated user within the specified pagination range
+// @Tags        Tasks
+// @Security    ApiKeyAuth
+// @Accept      json
+// @Produce     json
+// @Param       authorization header   string true "bearer token"
+// @Param       from          query    integer false "Pagination start index (default: 0)"
+// @Param       to            query    integer false "Pagination end index (default: 10)"
+// @Success     200           {object} []domain.Task
+// @Failure     400           {object} domain.ErrorResponse
+// @Failure     500           {object} domain.ErrorResponse
+// @Router      /tasks [get]
 func (u *TaskController) Fetch(c *gin.Context) {
 	userID := c.GetString("x-user-id")
 
@@ -69,6 +96,20 @@ func (u *TaskController) Fetch(c *gin.Context) {
 	c.JSON(http.StatusOK, tasks)
 }
 
+// Update godoc
+// @Summary     Update a task
+// @Description Updates an existing task for the authenticated user
+// @Tags        Tasks
+// @Security    ApiKeyAuth
+// @Accept      json
+// @Produce     json
+// @Param       authorization header   string      true "bearer token"
+// @Param       id            path     string      true "Task ID"
+// @Param       task          body     domain.Task true "Task object"
+// @Success     200           {object} domain.SuccessResponse
+// @Failure     400           {object} domain.ErrorResponse
+// @Failure     500           {object} domain.ErrorResponse
+// @Router      /tasks/{id} [put]
 func (u *TaskController) Update(c *gin.Context) {
 	var task domain.Task
 	var err error
@@ -101,6 +142,19 @@ func (u *TaskController) Update(c *gin.Context) {
 		Message: "Task updated successfully",
 	})
 }
+
+// Delete godoc
+// @Summary     Delete a task
+// @Description Deletes a task for the authenticated user
+// @Tags        Tasks
+// @Security    ApiKeyAuth
+// @Accept      json
+// @Produce     json
+// @Param       authorization header   string      true "bearer token"
+// @Param       id            path     string true "Task ID"
+// @Success     200           {object} domain.SuccessResponse
+// @Failure     500           {object} domain.ErrorResponse
+// @Router      /tasks/{id} [delete]
 
 func (u *TaskController) Delete(c *gin.Context) {
 	id := c.Param("id")

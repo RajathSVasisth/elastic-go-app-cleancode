@@ -15,6 +15,20 @@ type LoginController struct {
 	Env          *bootstrap.Env
 }
 
+// Login godoc
+//
+// @Summary     Login user
+// @Description Logs in a user and returns access and refresh tokens
+// @Tags        Login
+// @Accept      json
+// @Produce     json
+// @Param       request body     domain.LoginRequest true "Login request body"
+// @Success     200     {object} domain.LoginResponse
+// @Failure     400     {object} domain.ErrorResponse
+// @Failure     401     {object} domain.ErrorResponse
+// @Failure     404     {object} domain.ErrorResponse
+// @Failure     500     {object} domain.ErrorResponse
+// @Router      /login [post]
 func (lc *LoginController) Login(c *gin.Context) {
 	var request domain.LoginRequest
 

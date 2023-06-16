@@ -5,7 +5,7 @@ import (
 )
 
 type RefreshTokenRequest struct {
-	RefreshToken string `form:"refreshToken" binding:"required"`
+	RefreshToken string `form:"refreshToken" binding:"required" json:"refreshToken"`
 }
 
 type RefreshTokenResponse struct {
