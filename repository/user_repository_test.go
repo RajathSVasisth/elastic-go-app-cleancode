@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
-	"github.com/RajathSVasisth/elastic-go-app-cleancode/mocks"
+	mocks "github.com/RajathSVasisth/elastic-go-app-cleancode/mocks/mongo"
 	"github.com/RajathSVasisth/elastic-go-app-cleancode/repository"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

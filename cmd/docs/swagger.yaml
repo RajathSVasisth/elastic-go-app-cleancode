@@ -1,3 +1,4 @@
+basePath: /
 definitions:
   domain.ErrorResponse:
     properties:
@@ -82,8 +83,17 @@ definitions:
       userid:
         type: string
     type: object
+host: localhost:8081
 info:
-  contact: {}
+  contact:
+    email: rajath@ozone.one
+    name: API Support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Elastic Go App CRUD API
+  version: "1.0"
 paths:
   /login:
     post:
@@ -156,11 +166,6 @@ paths:
       - application/json
       description: Refreshes the access token using a valid refresh token
       parameters:
-      - description: bearer token
-        in: header
-        name: authorization
-        required: true
-        type: string
       - description: Refresh token request body
         in: body
         name: request
@@ -343,4 +348,7 @@ paths:
       summary: Update a task
       tags:
       - Tasks
+securityDefinitions:
+  BasicAuth:
+    type: basic
 swagger: "2.0"

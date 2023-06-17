@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
-	"github.com/RajathSVasisth/elastic-go-app-cleancode/mocks"
+	mocks "github.com/RajathSVasisth/elastic-go-app-cleancode/mocks/domain"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -160,3 +160,5 @@ func TestGetTask(t *testing.T) {
 		})
 	}
 }
+
+//Similar test cases can be written for update and delete methods as well

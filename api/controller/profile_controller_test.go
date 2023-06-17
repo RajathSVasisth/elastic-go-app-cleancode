@@ -9,7 +9,7 @@ import (
 
 	"github.com/RajathSVasisth/elastic-go-app-cleancode/api/controller"
 	"github.com/RajathSVasisth/elastic-go-app-cleancode/domain"
-	"github.com/RajathSVasisth/elastic-go-app-cleancode/mocks"
+	mocks "github.com/RajathSVasisth/elastic-go-app-cleancode/mocks/domain"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

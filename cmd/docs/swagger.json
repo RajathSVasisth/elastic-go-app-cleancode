@@ -1,8 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "This is a sample server celler server.",
+        "title": "Elastic Go App CRUD API",
+        "contact": {
+            "name": "API Support",
+            "email": "rajath@ozone.one"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
     },
+    "host": "localhost:8081",
+    "basePath": "/",
     "paths": {
         "/login": {
             "post": {
@@ -119,13 +131,6 @@
                 ],
                 "summary": "Refresh access token",
                 "parameters": [
-                    {
-                        "type": "string",
-                        "description": "bearer token",
-                        "name": "authorization",
-                        "in": "header",
-                        "required": true
-                    },
                     {
                         "description": "Refresh token request body",
                         "name": "request",
@@ -530,6 +535,11 @@
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
         }
     }
 }
