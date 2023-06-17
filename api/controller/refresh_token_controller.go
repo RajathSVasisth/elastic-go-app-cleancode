@@ -19,12 +19,11 @@ type RefreshTokenController struct {
 // @Tags        Token
 // @Accept      json
 // @Produce     json
-// @Param       authorization header   string                     true "bearer token"
-// @Param       request       body     domain.RefreshTokenRequest true "Refresh token request body"
-// @Success     200           {object} domain.RefreshTokenResponse
-// @Failure     400           {object} domain.ErrorResponse
-// @Failure     401           {object} domain.ErrorResponse
-// @Failure     500           {object} domain.ErrorResponse
+// @Param       request body     domain.RefreshTokenRequest true "Refresh token request body"
+// @Success     200     {object} domain.RefreshTokenResponse
+// @Failure     400     {object} domain.ErrorResponse
+// @Failure     401     {object} domain.ErrorResponse
+// @Failure     500     {object} domain.ErrorResponse
 // @Router      /refresh [post]
 func (rtc *RefreshTokenController) RefreshToken(c *gin.Context) {
 	var request domain.RefreshTokenRequest

@@ -20,7 +20,7 @@ type TaskController struct {
 // @Security    ApiKeyAuth
 // @Accept      json
 // @Produce     json
-// @Param       authorization header   string  true  "bearer token"
+// @Param       authorization header   string true "bearer token"
 // @Param       task          body     domain.Task true "Task object"
 // @Success     200           {object} domain.SuccessResponse
 // @Failure     400           {object} domain.ErrorResponse
@@ -62,7 +62,7 @@ func (tc *TaskController) Create(c *gin.Context) {
 // @Security    ApiKeyAuth
 // @Accept      json
 // @Produce     json
-// @Param       authorization header   string true "bearer token"
+// @Param       authorization header   string  true  "bearer token"
 // @Param       from          query    integer false "Pagination start index (default: 0)"
 // @Param       to            query    integer false "Pagination end index (default: 10)"
 // @Success     200           {object} []domain.Task

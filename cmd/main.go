@@ -9,23 +9,23 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//	@title			Elastic Go App CRUD API
-//	@version		1.0
-//	@description	This is a sample server celler server.
+// @title       Elastic Go App CRUD API
+// @version     1.0
+// @description This is a sample server celler server.
 
-//	@contact.name	API Support
-//	@contact.email	rajath@ozone.one
+// @contact.name  API Support
+// @contact.email rajath@ozone.one
 
-//	@license.name	Apache 2.0
-//	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
+// @license.name Apache 2.0
+// @license.url  http://www.apache.org/licenses/LICENSE-2.0.html
 
-//	@host		localhost:8081
-//	@BasePath	/
+// @host     localhost:8081
+// @BasePath /
 
-//	@securityDefinitions.basic	BasicAuth
+// @securityDefinitions.basic BasicAuth
 
-// @externalDocs.description	OpenAPI
-// @externalDocs.url			https://swagger.io/resources/open-api/
+// @externalDocs.description OpenAPI
+// @externalDocs.url         https://swagger.io/resources/open-api/
 func main() {
 
 	app := bootstrap.App()
